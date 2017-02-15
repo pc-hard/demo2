@@ -1,0 +1,2 @@
+#!/bin/bash
+ls -l > $HOME/Documents/bash/ls.list
