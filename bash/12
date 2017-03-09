@@ -1,0 +1,10 @@
+#!/bin/bash
+echo par1
+read par1
+echo par2
+read par2
+function subtr(){
+	res=$(($par2 - $par1))
+	echo $res
+ }
+ subtr

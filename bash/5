@@ -1,0 +1,3 @@
+#!/bin/bash
+mkdir $HOME/Documents/bash/test5
+cp $HOME/Documents/bash/* $HOME/Documents/bash/test5
