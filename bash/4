@@ -1,8 +1,0 @@
-#!/bin/bash
-echo "insert num1: "
-read num1
-echo "insert num2: "
-read num2
-echo "insert num3: "
-read num3
-echo -e "a $num1\nb $num2\nc $num3" | awk '{if(min==""){min=max=$1}; if($2>max) {max=$2}; if($2< min) {min=$2; name=$1}; count+=1} END {print name "=" min}'
