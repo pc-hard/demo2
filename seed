@@ -13,54 +13,101 @@ folder(folderName) {
 }
 
 pipelineJob("${folderName}/${folderName}-pipeline") {
+
     definition {
+
         cps {
+
             script(readFileFromWorkspace('jenkinsfile'))
+
             sandbox()
+
         }
+
     }
+
 }
 
-
 job("${folderName}/test") {
+
     logRotator(-1, 10)
+
+    
+
     scm {
+
             git {
+
                 remote {
+
                     url(giturl)
+
                 }
+
             }
+
         }
+
+    
+
     triggers {
+
         // githubPush()
+
         scm('H/2 * * * *')
+
     }
+
     steps{
-        shell "echo 'Hello'"
-        //shell "pylint '/var/lib/jenkins/workspace/Demo2/test/hello.py' || exit 0"
-        //shell "cp '/var/lib/jenkins/workspace/Demo2/test/hello.py' /var/lib/jenkins/workspace/Demo2/build/"
+
+        shell(readFileFromWorkspace('test.groovy'))
+
     }
+
 }
 
 job("${folderName}/build") {
+
     logRotator(-1, 10)
+
+    
+
     triggers {
+
         // githubPush()
+
         scm('H/2 * * * *')
+
     }
+
     steps{
-       // shell "cp /var/lib/jenkins/workspace/Demo2/build/hello.py /var/lib/jenkins/workspace/Demo2/deploy/"
+
+        shell(readFileFromWorkspace('build.groovy'))
+
     }
+
 }
 
 job("${folderName}/deploy") {
+
     logRotator(-1, 10)
-      steps{
-          shell "echo 'Hello'"
-           // shell 'sh /home/user/copy.sh'
+
+    
+
+    steps{
+
+        shell(readFileFromWorkspace('deploy.groovy'))
+
     }
+
+    
+
     triggers {
+
         // githubPush()
+
         scm('H/2 * * * *')
+
     }
+
 }
