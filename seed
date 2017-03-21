@@ -4,12 +4,12 @@ import groovy.io.FileType
 import hudson.FilePath
 import hudson.*
 
-def folderName = 'Demo2'
+def folderName = 'Demo'
 def giturl = 'https://github.com/pc-hard/demo2.git'
 
 folder(folderName) {
-    displayName('Demo2')
-    description('Folder for Demo2')
+    displayName('Demo')
+    description('Folder for Demo')
 }
 
 pipelineJob("${folderName}/${folderName}-pipeline") {
