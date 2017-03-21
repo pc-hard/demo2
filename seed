@@ -5,7 +5,7 @@ import hudson.FilePath
 import hudson.*
 
 def folderName = 'Demo2'
-def giturl = 'http://172.31.114.190/root/jenkins.git'
+def giturl = 'https://github.com/pc-hard/demo2.git'
 
 folder(folderName) {
     displayName('Demo2')
