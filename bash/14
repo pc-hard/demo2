@@ -1,5 +1,0 @@
-#!/bin/bash
-#ls -l > $HOME/Documents/bash/ls.list
-ls -l / | awk '{print $0}' $HOME/Documents/bash/ls.list 
-tr '[:lower:]' '[:upper:]' <"$HOME/Documents/bash/ls.list"
-
