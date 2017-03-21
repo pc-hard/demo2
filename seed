@@ -1,56 +1,66 @@
 #!groovy
+
 import groovy.io.FileType
 import hudson.FilePath
 import hudson.*
 
-def folderName = 'project_test'
-
+def folderName = 'Demo2'
+def giturl = 'http://172.31.114.190/root/jenkins.git'
 
 folder(folderName) {
-    displayName('Project Test')
-    description('Folder for project Test')
+    displayName('Demo2')
+    description('Folder for Demo2')
 }
 
-def pathWorkspace = "/var/lib/jenkins/workspace/${folderName}"
-
-
-job("${folderName}/cloneFromGit") {
-    logRotator(-1, 10)
-    scm {
-        github('pc-hard/web', 'master')
+pipelineJob("${folderName}/${folderName}-pipeline") {
+    definition {
+        cps {
+            script(readFileFromWorkspace('jenkinsfile'))
+            sandbox()
+        }
     }
-    triggers {
-       // githubPush()
-        scm('H/2 * * * *')
-    }
-//    steps {
-//
-//        dsl {
-//            external "test/jobs/createBuldTestJobs.groovy"
-//        }
-//    }
 }
-job("${folderName}/createBuldTestJobs") {
+
+
+job("${folderName}/test") {
     logRotator(-1, 10)
     scm {
-        github('pc-hard/dsl', 'master')
-    }
+            git {
+                remote {
+                    url(giturl)
+                }
+            }
+        }
     triggers {
         // githubPush()
         scm('H/2 * * * *')
     }
-    steps {
-
-        dsl {
-            external "jobs"
-        }
+    steps{
+        shell "echo 'Hello'"
+        //shell "pylint '/var/lib/jenkins/workspace/Demo2/test/hello.py' || exit 0"
+        //shell "cp '/var/lib/jenkins/workspace/Demo2/test/hello.py' /var/lib/jenkins/workspace/Demo2/build/"
     }
 }
-pipelineJob("${folderName}/${folderName}-pipeline") {
-    definition {
-        cps {
-            script(readFileFromWorkspace("/var/lib/jenkins/jobs/44/workspace/pipeline/pipeline.groovy"))
-            sandbox()
-        }
+
+job("${folderName}/build") {
+    logRotator(-1, 10)
+    triggers {
+        // githubPush()
+        scm('H/2 * * * *')
+    }
+    steps{
+       // shell "cp /var/lib/jenkins/workspace/Demo2/build/hello.py /var/lib/jenkins/workspace/Demo2/deploy/"
+    }
+}
+
+job("${folderName}/deploy") {
+    logRotator(-1, 10)
+      steps{
+          shell "echo 'Hello'"
+           // shell 'sh /home/user/copy.sh'
+    }
+    triggers {
+        // githubPush()
+        scm('H/2 * * * *')
     }
 }
