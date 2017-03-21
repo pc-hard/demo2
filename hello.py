@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 from flask import Flask
 app = Flask(__name__)
 
@@ -8,7 +7,4 @@ def hello():
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=8080)
-
-=======
-111
->>>>>>> e9cfbd0551aa0cbe46475de5fc05e37304711c09
+    
