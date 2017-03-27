@@ -4,7 +4,7 @@ import hudson.FilePath
 import hudson.*
 import groovy.json.JsonSlurper
 def jsondata = new JsonSlurper().parseText(readFileFromWorkspace('data.json'))
-println json
+println jsondata
 def jsonvalue = jsondata.build.ipserver
 println jsonvalue
 
