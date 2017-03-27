@@ -4,7 +4,7 @@ import groovy.io.FileType
 import hudson.FilePath
 import hudson.*
 import groovy.json.JsonSlurper
-def jsondata = new JsonSlurper().parseText(readFileFromWorkspace('data.json'))
+//def jsondata = new JsonSlurper().parseText(readFileFromWorkspace('data.json'))
 //jsondata.build.ipaddr
 
 def folderName = 'Demo'
