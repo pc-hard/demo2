@@ -50,8 +50,9 @@ job("${folderName}/build") {
         scm('H/2 * * * *')
     }
     steps{
+        println "${jsondata.build.ipserver}"
         shell(readFileFromWorkspace('build.groovy'))
-        shell(echo ("${jsondata.build.ipserver}"))
+        shell("echo ${jsondata.build.ipserver}")
         println "${jsondata.build.ipserver}"
     }
 }
