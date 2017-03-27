@@ -51,7 +51,7 @@ job("${folderName}/build") {
     }
     steps{
         shell(readFileFromWorkspace('build.groovy'))
-        shell(echo "${jsondata.build.ipserver}")
+        shell(echo ("${jsondata.build.ipserver}"))
         println "${jsondata.build.ipserver}"
     }
 }
