@@ -49,6 +49,9 @@ job("${folderName}/build") {
         // githubPush()
         scm('H/2 * * * *')
     }
+    parameters{
+    stringParam(jsondata.build.ipserver)
+    }
     steps{
         println "${jsondata.build.ipserver}"
         shell(readFileFromWorkspace('build.groovy'))
