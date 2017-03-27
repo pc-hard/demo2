@@ -5,7 +5,7 @@
             "login" : "user",
             "passwd" : "123"
 
-        }
+        },
      "test" :
         {
             "a" : "command1",
@@ -15,7 +15,7 @@
             "e" : "command3",
             "f" : "touch 1"
 
-        }
+        },
      "deploy" :
         {
             "g" : "command1",
