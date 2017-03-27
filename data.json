@@ -1,12 +1,9 @@
 {
     "build" :
         {
-            "name" : "command1",
-            "value" : "ls -ll",
-	          "name" : "command2",
-            "value" : "cat *",
-            "name" : "command3",
-            "value" : "touch 1"
+            "ipaddr" : "127.0.0.1",	        
+            "login" : "user",
+            "passwd" : "123"
 
         }
      "test" :
