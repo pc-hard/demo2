@@ -52,7 +52,7 @@ job("${folderName}/build") {
     }
     steps{
         shell(readFileFromWorkspace('build.groovy'))
-        shell(echo $jsondata.build.ipaddr)
+        echo 'jsondata.build.ipaddr'
     }
 }
 
