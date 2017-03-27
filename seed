@@ -4,9 +4,9 @@ import hudson.FilePath
 import hudson.*
 import groovy.json.JsonSlurper
 def jsondata = new JsonSlurper().parseText(readFileFromWorkspace('data.json'))
-println jsondata
+//println jsondata  # debug 1
 def jsonvalue = jsondata.build.ipserver
-println jsonvalue
+//println jsonvalue   debug 2
 
 def folderName = 'Demo'
 def giturl = 'https://github.com/pc-hard/demo2.git'
@@ -51,7 +51,7 @@ job("${folderName}/build") {
     }
     steps{
         shell(readFileFromWorkspace('build.groovy'))
-        //shell(echo {jsonvalue})
+        println jsonvalue
     }
 }
 
