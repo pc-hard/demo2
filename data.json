@@ -1,7 +1,7 @@
 {
     "build" :
         {
-            "ipserver" : "127.0.0.1",	        
+            "ipserver" : "54.154.125.210",	        
             "login" : "user",
             "passwd" : "123"
 
