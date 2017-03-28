@@ -5,7 +5,7 @@ import hudson.*
 import groovy.json.JsonSlurper
 def jsondata = new JsonSlurper().parseText(readFileFromWorkspace('data.json'))
 //println jsondata  # debug 1
-def jsonvalue = jsondata.build.ipserver
+//def jsonvalue = jsondata.build.ipserver
 //println jsonvalue   debug 2
 
 def folderName = 'Demo'
