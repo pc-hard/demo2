@@ -50,7 +50,9 @@ job("${folderName}/build") {
         scm('H/2 * * * *')
     }
     parameters{
-        stringParam('ip_adr',"${jsondata.build.ipserver}")
+        jsondata.build.each(key, value) ->
+            stringParam("${key}","${value}")
+        //stringParam('ip_adr',"${jsondata.build.ipserver}")
     }
     steps{
         //println "${jsondata.build.ipserver}"
