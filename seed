@@ -53,10 +53,10 @@ job("${folderName}/build") {
     stringParam(jsondata.build.ipserver)
     }
     steps{
-        \\println "${jsondata.build.ipserver}"
+        //println "${jsondata.build.ipserver}"
         shell(readFileFromWorkspace('build.groovy'))
-        \\shell("echo ${jsondata.build.ipserver}")
-        \\println "${jsondata.build.ipserver}"
+        //shell("echo ${jsondata.build.ipserver}")
+        //println "${jsondata.build.ipserver}"
     }
 }
 
