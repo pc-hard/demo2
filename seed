@@ -68,5 +68,6 @@ job("${folderName}/deploy") {
     triggers {
         // githubPush()
         scm('H/2 * * * *')
+    
     }
 }
