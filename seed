@@ -4,9 +4,6 @@ import hudson.FilePath
 import hudson.*
 import groovy.json.JsonSlurper
 def jsondata = new JsonSlurper().parseText(readFileFromWorkspace('data.json'))
-//println jsondata  # debug 1
-//def jsonvalue = jsondata.build.ipserver
-//println jsonvalue   debug 2
 
 def folderName = 'Demo'
 def giturl = 'https://github.com/pc-hard/demo2.git'
@@ -52,17 +49,16 @@ job("${folderName}/build") {
     parameters{
         jsondata.build.each{key, value ->
             stringParam("${key}","${value}")
-        //stringParam('ip_adr',"${jsondata.build.ipserver}")
+        
         }
     }
-    steps{
-        //println "${jsondata.build.ipserver}"
+    steps{       
         shell(readFileFromWorkspace('build.groovy'))
+        //arhive artefact post buid actions
         publishers {
         archiveArtifacts('*.py')
     }
-        //shell("echo ${jsondata.build.ipserver}")
-        //println "${jsondata.build.ipserver}"
+        
     }
 }
 
