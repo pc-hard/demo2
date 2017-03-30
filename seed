@@ -67,9 +67,9 @@ job("${folderName}/build") {
 job("${folderName}/deploy") {
     logRotator(-1, 10)
     steps{
-        //step ([$class: 'CopyArtifact', projectName: 'test', filter: '*.py'])
-        [$class: 'CopyArtifact', projectName: 'test', filter: '*.py']
-        shell(readFileFromWorkspace('deploy.groovy'))
+        step ([$class: 'CopyArtifact', projectName: 'test', filter: '*.py'])
+        //[$class: 'CopyArtifact', projectName: 'test', filter: '*.py']
+        step (shell(readFileFromWorkspace('deploy.groovy')))
     }
     triggers {
         // githubPush()
