@@ -59,7 +59,7 @@ job("${folderName}/build") {
         }
     }
     steps{  
-        //$class: 'CopyArtifact', projectName: 'test', filter: '*.py'
+        [$class: 'CopyArtifact', projectName: 'test', filter: '*.py']
         shell(readFileFromWorkspace('build.groovy'))       
     }
 }
