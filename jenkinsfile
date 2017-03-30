@@ -1,7 +1,6 @@
 node {
    stage('test') {
-       build job: 'test', propagate: false
-       archiveArtifacts('*.py')
+       build job: 'test', propagate: false 
        
    }
    stage('Build') {
@@ -9,7 +8,6 @@ node {
        build job: 'build', propagate: false
    }
    stage('deploy') {
-           build job: 'deploy', propagate: false
-           step ([$class: 'CopyArtifact', projectName: 'test', filter: '*.py'])
+           build job: 'deploy', propagate: false           
   }
 }
