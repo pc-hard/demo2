@@ -58,6 +58,9 @@ job("${folderName}/build") {
     steps{
         //println "${jsondata.build.ipserver}"
         shell(readFileFromWorkspace('build.groovy'))
+        publishers {
+        archiveArtifacts('*.py')
+    }
         //shell("echo ${jsondata.build.ipserver}")
         //println "${jsondata.build.ipserver}"
     }
