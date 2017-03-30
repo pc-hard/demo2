@@ -6,9 +6,10 @@ node {
    stage('Build') {
        input 'Do you want to proceed to the Deployment?'
        build job: 'build', propagate: false
+       step ([$class: 'CopyArtifact', projectName: 'test', filter: '*.py'])
    }
    stage('deploy') {
            build job: 'deploy', propagate: false  
-           step ([$class: 'CopyArtifact', projectName: 'test', filter: '*.py'])
+           //step ([$class: 'CopyArtifact', projectName: 'test', filter: '*.py'])
   }
 }
