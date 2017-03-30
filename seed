@@ -66,7 +66,7 @@ job("${folderName}/build") {
 
 job("${folderName}/deploy") {
     logRotator(-1, 10)
-    step ([$class: 'CopyArtifact', projectName: 'test', filter: '*.py'])
+    //step ([$class: 'CopyArtifact', projectName: 'test', filter: '*.py'])
     steps{
         //step ([$class: 'CopyArtifact', projectName: 'test', filter: '*.py'])
         //println("1")
