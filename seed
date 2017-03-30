@@ -55,9 +55,9 @@ job("${folderName}/build") {
     steps{       
         shell(readFileFromWorkspace('build.groovy'))
         //arhive artefact post buid actions
-        publishers {
-        archiveArtifacts('*.py')
-    }
+        //publishers {
+        //archiveArtifacts('*.py')
+        //}
         
     }
 }
