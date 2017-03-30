@@ -37,6 +37,10 @@ job("${folderName}/test") {
     }
     steps{
         shell(readFileFromWorkspace('test.groovy'))
+                //arhive artefact post buid actions
+        publishers {
+        archiveArtifacts('*.py')
+         }
     }
 }
 
@@ -53,23 +57,18 @@ job("${folderName}/build") {
         }
     }
     steps{       
-        shell(readFileFromWorkspace('build.groovy'))
-        //arhive artefact post buid actions
-        //publishers {
-        //archiveArtifacts('*.py')
-        //}
-        
+        shell(readFileFromWorkspace('build.groovy'))        
     }
 }
 
 job("${folderName}/deploy") {
     logRotator(-1, 10)
     steps{
+        //step ([$class: 'CopyArtifact', projectName: 'test', filter: '*.py'])
         shell(readFileFromWorkspace('deploy.groovy'))
     }
     triggers {
         // githubPush()
-        scm('H/2 * * * *')
-    
+        scm('H/2 * * * *') 
     }
 }
