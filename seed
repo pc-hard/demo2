@@ -70,7 +70,7 @@ job("${folderName}/deploy") {
     steps{
         //step ([$class: 'CopyArtifact', projectName: 'test', filter: '*.py'])
         //println("1")
-        {$class: 'CopyArtifact', projectName: 'test', filter: '*.py'}
+        $class: 'CopyArtifact', projectName: 'test', filter: '*.py'
         //println("2")
         shell(readFileFromWorkspace('deploy.groovy'))
         //println("3")
