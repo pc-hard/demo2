@@ -19,7 +19,7 @@
      "deploy" :
         {
             "g" : "command1",
-            "q" : "ls -ll",
+            "q" : "ls -la”,  #list
 	    "r" : "command2",
             "hj" : "cat *",
             "k" : "command3",
